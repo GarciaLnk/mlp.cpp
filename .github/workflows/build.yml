@@ -9,6 +9,8 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v4
       - name: Build project
+        env:
+          CXX: g++-13
         run: make
       - name: Run tests
         run: make test
