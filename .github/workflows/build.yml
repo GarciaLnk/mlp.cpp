@@ -1,0 +1,19 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v4
+      - name: Build project
+        run: make
+      - name: Run tests
+        run: make test
+      - name: Upload library as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: libmlp.a
+          path: build/libmlp.a
